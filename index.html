@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muratec — IT Consulting & Business Automation</title>
+  <meta name="description" content="Muratec delivers enterprise IT consulting, AI-powered business automation, and custom software solutions from Lisbon, Portugal." />
+  <meta name="keywords" content="IT consulting, AI automation, business automation, software development, Lisbon, Portugal, Muratec" />
+  <meta property="og:title" content="Muratec — IT Consulting & Business Automation" />
+  <meta property="og:description" content="Enterprise IT consulting and AI-powered automation solutions. Based in Lisbon, Portugal." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:   #0d1f17;
+      --green-mid:    #1a3728;
+      --green-accent: #2d5a40;
+      --gold:         #c9a84c;
+      --gold-light:   #e4c97e;
+      --gold-dim:     #8a6e2f;
+      --navy:         #0c1829;
+      --white:        #f5f0e8;
+      --white-dim:    #b8b0a0;
+      --white-faint:  rgba(245,240,232,0.06);
+      --border:       rgba(201,168,76,0.18);
+      --border-subtle: rgba(245,240,232,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--green-deep);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ─── GEOMETRIC BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(45,90,64,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 80%, rgba(12,24,41,0.6) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 30% at 70% 20%, rgba(201,168,76,0.07) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ottoman-inspired subtle grid pattern */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 2 L58 30 L30 58 L2 30 Z' fill='none' stroke='rgba(201,168,76,0.04)' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='3' fill='none' stroke='rgba(201,168,76,0.06)' stroke-width='0.5'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section { position: relative; z-index: 1; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(13,31,23,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.6s ease;
+    }
+    .nav-logo-mark:hover { transform: rotate(225deg); }
+    .nav-logo-mark span {
+      transform: rotate(-45deg);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--gold);
+      letter-spacing: 0;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.35s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-title .accent-line {
+      display: block;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--white-dim);
+      max-width: 420px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+      color: var(--green-deep);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--white-dim);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      border-color: var(--gold-dim);
+      color: var(--gold-light);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 1.2s 0.6s forwards;
+    }
+
+    .hero-emblem {
+      position: relative;
+      width: 340px;
+      height: 340px;
+    }
+
+    .emblem-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+
+    .ring-1 {
+      inset: 0;
+      animation: spinSlow 30s linear infinite;
+      border-color: rgba(201,168,76,0.2);
+      border-top-color: var(--gold);
+    }
+
+    .ring-2 {
+      inset: 30px;
+      animation: spinSlow 20s linear infinite reverse;
+      border-color: rgba(201,168,76,0.12);
+      border-right-color: rgba(201,168,76,0.5);
+    }
+
+    .ring-3 {
+      inset: 60px;
+      border-color: rgba(245,240,232,0.05);
+    }
+
+    .emblem-center {
+      position: absolute;
+      inset: 90px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .emblem-letter {
+      transform: rotate(-45deg);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-shadow: 0 0 40px rgba(201,168,76,0.4);
+    }
+
+    .emblem-dots {
+      position: absolute;
+      inset: 0;
+      animation: spinSlow 15s linear infinite;
+    }
+
+    .emblem-dot {
+      position: absolute;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      margin: -2.5px;
+    }
+
+    .emblem-dot:nth-child(1) { transform: rotate(0deg) translateX(160px); }
+    .emblem-dot:nth-child(2) { transform: rotate(90deg) translateX(160px); }
+    .emblem-dot:nth-child(3) { transform: rotate(180deg) translateX(160px); }
+    .emblem-dot:nth-child(4) { transform: rotate(270deg) translateX(160px); }
+
+    /* ─── IDENTITY STRIP ─── */
+    .identity-strip {
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.2rem 0;
+      overflow: hidden;
+    }
+
+    .identity-strip .container {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .id-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .id-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .id-value {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .id-sep {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
+    }
+
+    /* ─── SERVICES ─── */
+    .services {
+      padding: 8rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    .section-title strong {
+      font-weight: 600;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border-subtle);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .service-card {
+      background: var(--green-deep);
+      padding: 2.5rem 2rem;
+      transition: background 0.4s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--green-mid); }
+
+    .service-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      filter: grayscale(30%);
+    }
+
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--white);
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--white-dim);
+    }
+
+    /* ─── DONNA AI FEATURE ─── */
+    .donna-section {
+      padding: 6rem 0;
+    }
+
+    .donna-inner {
+      background: linear-gradient(135deg, var(--green-mid) 0%, var(--navy) 100%);
+      border: 1px solid var(--border);
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    }
+
+    .donna-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--gold-dim);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .donna-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .donna-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .donna-title strong { font-weight: 600; color: var(--gold-light); }
+
+    .donna-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+
+    .donna-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .donna-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--white-dim);
+    }
+
+    .donna-feat::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.4rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .donna-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .donna-card {
+      width: 100%;
+      max-width: 320px;
+      background: rgba(13,31,23,0.8);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+    }
+
+    .donna-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .donna-avatar {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--green-deep);
+    }
+
+    .donna-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .donna-card-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .donna-module-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .donna-module {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.6rem;
+      background: var(--white-faint);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--white-dim);
+      letter-spacing: 0.06em;
+    }
+
+    .module-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .dot-active { background: #4ade80; }
+    .dot-dev { background: var(--gold); }
+    .dot-soon { background: var(--white-dim); opacity: 0.4; }
+
+    /* ─── ABOUT ─── */
+    .about {
+      padding: 8rem 0;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-body {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--white-dim);
+    }
+
+    .about-body p + p { margin-top: 1.2rem; }
+
+    .about-body strong { color: var(--white); font-weight: 500; }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-top: 0.5rem;
+    }
+
+    .stat {
+      border-left: 1px solid var(--border);
+      padding-left: 1.5rem;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      padding: 8rem 0 6rem;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .contact-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .contact-value a {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s, color 0.3s;
+      padding-bottom: 1px;
+    }
+    .contact-value a:hover {
+      color: var(--gold-light);
+      border-color: var(--gold-dim);
+    }
+
+    .contact-form-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .form-input, .form-textarea {
+      background: var(--white-faint);
+      border: 1px solid var(--border-subtle);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: none;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--gold-dim);
+    }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(184,176,160,0.35);
+    }
+    .form-textarea { min-height: 110px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--white-dim);
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    .footer-right {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner, .donna-inner, .about-inner, .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .hero-visual { order: -1; }
+      .hero-emblem { width: 220px; height: 220px; }
+      .emblem-dot:nth-child(1) { transform: rotate(0deg) translateX(104px); }
+      .emblem-dot:nth-child(2) { transform: rotate(90deg) translateX(104px); }
+      .emblem-dot:nth-child(3) { transform: rotate(180deg) translateX(104px); }
+      .emblem-dot:nth-child(4) { transform: rotate(270deg) translateX(104px); }
+      .services-grid { grid-template-columns: 1fr; }
+      .donna-inner { padding: 2.5rem 1.8rem; }
+      .nav-links { display: none; }
+      .identity-strip .container { gap: 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 7rem 0 4rem; }
+      .services, .about, .contact { padding: 5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container">
+      <a class="nav-logo" href="#">
+        <div class="nav-logo-mark"><span>M</span></div>
+        <span class="nav-brand">Muratec</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#donna">Donna AI</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-eyebrow">IT Consulting & Business Automation — Lisbon, Portugal</p>
+          <h1 class="hero-title">
+            <em>Intelligent</em>
+            <span class="accent-line">Systems.</span>
+            <em>Lasting</em>
+            <span class="accent-line">Impact.</span>
+          </h1>
+          <div class="hero-divider"></div>
+          <p class="hero-sub">
+            Muratec delivers enterprise-grade IT consulting, AI-powered automation platforms, and custom software solutions — built for businesses that think beyond today.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn-primary">
+              Start a Project
+            </a>
+            <a href="#services" class="btn-secondary">
+              Our Services
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-emblem">
+            <div class="emblem-ring ring-1"></div>
+            <div class="emblem-ring ring-2"></div>
+            <div class="emblem-ring ring-3"></div>
+            <div class="emblem-dots">
+              <div class="emblem-dot"></div>
+              <div class="emblem-dot"></div>
+              <div class="emblem-dot"></div>
+              <div class="emblem-dot"></div>
+            </div>
+            <div class="emblem-center">
+              <span class="emblem-letter">M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTITY STRIP -->
+  <div class="identity-strip">
+    <div class="container">
+      <div class="id-item">
+        <span class="id-label">Entity</span>
+        <span class="id-value">Muratec ENI</span>
+      </div>
+      <div class="id-sep"></div>
+      <div class="id-item">
+        <span class="id-label">NIF</span>
+        <span class="id-value">332 987 493</span>
+      </div>
+      <div class="id-sep"></div>
+      <div class="id-item">
+        <span class="id-label">EU VAT</span>
+        <span class="id-value">PT332987493</span>
+      </div>
+      <div class="id-sep"></div>
+      <div class="id-item">
+        <span class="id-label">CAE</span>
+        <span class="id-value">62201 — IT Consulting</span>
+      </div>
+      <div class="id-sep"></div>
+      <div class="id-item">
+        <span class="id-label">Location</span>
+        <span class="id-value">Oeiras · Lisbon, Portugal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">What We Do</p>
+        <h2 class="section-title">
+          Technology as a<br />
+          <strong>competitive advantage.</strong>
+        </h2>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <p class="service-num">01</p>
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-name">IT Consulting</h3>
+          <p class="service-desc">Strategic technology advisory for businesses navigating digital transformation. Architecture review, vendor selection, and implementation roadmaps tailored to your scale.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">02</p>
+          <div class="service-icon">🤖</div>
+          <h3 class="service-name">AI Automation</h3>
+          <p class="service-desc">End-to-end business process automation powered by Donna AI — our modular platform that connects operations, invoicing, and data across your entire organisation.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">03</p>
+          <div class="service-icon">🛠️</div>
+          <h3 class="service-name">Software Development</h3>
+          <p class="service-desc">Custom web applications, APIs, and operational dashboards. Full-stack development with an emphasis on reliability, performance, and maintainability.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">04</p>
+          <div class="service-icon">📡</div>
+          <h3 class="service-name">IoT & Systems Integration</h3>
+          <p class="service-desc">Connecting physical infrastructure to digital intelligence. Sensor integration, real-time monitoring, and hardware-software bridges for operations-heavy businesses.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">05</p>
+          <div class="service-icon">🌐</div>
+          <h3 class="service-name">Web & Digital Presence</h3>
+          <p class="service-desc">Brand-forward websites, landing pages, and digital platforms. From concept to deployment — designed to convert and built to last.</p>
+        </div>
+        <div class="service-card">
+          <p class="service-num">06</p>
+          <div class="service-icon">📊</div>
+          <h3 class="service-name">Data & Reporting</h3>
+          <p class="service-desc">Operational intelligence through structured data pipelines, custom dashboards, and automated reporting — turning raw data into actionable decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONNA AI -->
+  <section class="donna-section" id="donna">
+    <div class="container">
+      <div class="donna-inner reveal">
+        <div class="donna-content">
+          <div class="donna-badge">Flagship Product</div>
+          <h2 class="donna-title">
+            Meet <strong>Donna AI</strong> —<br />
+            your business<br />
+            <em>operating system.</em>
+          </h2>
+          <p class="donna-text">
+            Donna AI is a modular business automation platform designed to replace fragmented tools with one intelligent core. From tours and restaurants to hospitality and logistics — Donna adapts to your industry.
+          </p>
+          <div class="donna-features">
+            <div class="donna-feat">Order management, invoicing, and compliance in a single flow</div>
+            <div class="donna-feat">Hybrid on-premise & cloud architecture — your data stays yours</div>
+            <div class="donna-feat">AI-assisted scheduling, reporting, and customer communication</div>
+            <div class="donna-feat">Multi-tenant, multi-industry modular design</div>
+          </div>
+        </div>
+        <div class="donna-visual">
+          <div class="donna-card">
+            <div class="donna-card-header">
+              <div class="donna-avatar">D</div>
+              <div>
+                <div class="donna-card-name">Donna AI</div>
+                <div class="donna-card-sub">Business OS · v1.0</div>
+              </div>
+            </div>
+            <div class="donna-module-list">
+              <div class="donna-module">
+                <span>Tours & Experiences</span>
+                <div class="module-dot dot-active"></div>
+              </div>
+              <div class="donna-module">
+                <span>Restaurant & Orders</span>
+                <div class="module-dot dot-dev"></div>
+              </div>
+              <div class="donna-module">
+                <span>Invoicing & Compliance</span>
+                <div class="module-dot dot-dev"></div>
+              </div>
+              <div class="donna-module">
+                <span>Auto Workshop</span>
+                <div class="module-dot dot-soon"></div>
+              </div>
+              <div class="donna-module">
+                <span>Hospitality & Airbnb</span>
+                <div class="module-dot dot-soon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner reveal">
+        <div>
+          <div class="section-header" style="margin-bottom:2.5rem;">
+            <p class="section-tag">About Muratec</p>
+            <h2 class="section-title">
+              Built by an<br />
+              <strong>engineer and founder.</strong>
+            </h2>
+          </div>
+          <div class="about-body">
+            <p>
+              Muratec is the consulting and product arm of entrepreneur and software engineer <strong>Ermin Muratović</strong> — Austrian-Bosnian, based in Lisbon. With over <strong>9 years of hands-on experience</strong> across IT infrastructure, full-stack development, systems engineering, and business operations, Muratec delivers what most consultancies can't: execution alongside strategy.
+            </p>
+            <p>
+              The philosophy is simple: <strong>technology should serve the business, not complicate it.</strong> Every engagement is approached from first principles — understanding the operation before touching the stack.
+            </p>
+            <p>
+              Muratec operates at the intersection of Central European precision and Balkan entrepreneurial intensity — bringing enterprise thinking to growing businesses across Portugal, Austria, and the Western Balkans.
+            </p>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">9+</div>
+            <div class="stat-label">Years self-employed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Countries of operation</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">EU</div>
+            <div class="stat-label">VAT registered · PT332987493</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Modules planned for Donna AI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal" style="margin-bottom:3.5rem;">
+        <p class="section-tag">Get In Touch</p>
+        <h2 class="section-title">
+          Let's build<br />
+          <strong>something intelligent.</strong>
+        </h2>
+      </div>
+      <div class="contact-inner reveal">
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">
+              <a href="mailto:contact@muratec.pt">contact@muratec.pt</a>
+            </span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Oeiras · Lisbon, Portugal</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Entity</span>
+            <span class="contact-value">Muratec ENI · NIF 332987493</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">EU VAT</span>
+            <span class="contact-value">PT332987493</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Registered Address</span>
+            <span class="contact-value">Avenida Brasília 36, R/C Dto<br />2780-207 Oeiras, Portugal</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Donna AI</span>
+            <span class="contact-value">
+              <a href="mailto:donna@muratec.pt">donna@muratec.pt</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="contact-form-area">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="email@company.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" placeholder="IT Consulting / Donna AI / Other" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn-primary" style="align-self:flex-start;" onclick="alert('Thanks — this form will be connected soon. Please email contact@muratec.pt directly.')">
+            Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <span class="footer-left">© 2025 Muratec ENI · NIF 332987493 · Oeiras, Portugal</span>
+      <span class="footer-right">Powered by Donna AI</span>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
